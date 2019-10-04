@@ -1,4 +1,4 @@
-package cn.KJ.Assignment1;
+	package cn.KJ.Assignment1;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
