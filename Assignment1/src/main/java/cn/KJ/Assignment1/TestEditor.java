@@ -65,6 +65,8 @@ public class TestEditor {
 		FileDialog openDia = new FileDialog( frame, "Open", FileDialog.LOAD);
 		FileDialog saveDia = new FileDialog(frame, "Save", FileDialog.SAVE);
 		
+
+		
 		JFrame searchFrame = new JFrame("Search");
 		JPanel searchPanel = new JPanel();
 		searchPanel.add(new JLabel("Enter the key word:"));
@@ -112,7 +114,7 @@ public class TestEditor {
 				saveDia.setVisible(true);
 				Functions saveit = new Functions();
 				saveit.setDirpath(saveDia.getDirectory());
-				saveit.setFilename(saveDia.getFile()+".txt");
+				saveit.setFilename(saveDia.getFile());
 				try {
 					saveit.SaveFile(area.getText().replaceAll("\n", "\r\n"));
 				} catch (IOException e1) {
