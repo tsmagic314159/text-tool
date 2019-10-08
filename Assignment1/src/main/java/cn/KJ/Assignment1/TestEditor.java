@@ -4,10 +4,13 @@ import java.awt.Dimension;
 import java.awt.FileDialog;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
@@ -18,6 +21,9 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
+import com.itextpdf.text.DocumentException;
 
 public class TestEditor {
 	static int times=0;
@@ -38,11 +44,13 @@ public class TestEditor {
 		JMenuItem save = new JMenuItem("Save");
 		JMenuItem open = new JMenuItem("Open");
 		JMenuItem searchword = new JMenuItem("Search");
+		JMenuItem save2PDF = new JMenuItem("Save as PDF");
 		
 		file.add(newitem);
 		file.add(open);
 		file.add(save);
 		file.add(printitem);
+		file.add(save2PDF);
 		search.add(searchword);
 		
 		bar.add(file);
@@ -64,7 +72,8 @@ public class TestEditor {
 		frame.setVisible(true);
 		FileDialog openDia = new FileDialog( frame, "Open", FileDialog.LOAD);
 		FileDialog saveDia = new FileDialog(frame, "Save", FileDialog.SAVE);
-		
+		JFileChooser pdfSaver = new JFileChooser();
+		pdfSaver.setFileFilter(new FileNameExtensionFilter("pdf", ".pdf"));
 
 		
 		JFrame searchFrame = new JFrame("Search");
@@ -170,6 +179,25 @@ public class TestEditor {
 						
 						area.select(searchList.get(times), searchList.get(times)+key.length());
 					}
+				}
+				
+			}
+		});
+		
+		save2PDF.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				pdfSaver.showDialog(frame, "save as a pdf");
+				File file = pdfSaver.getSelectedFile();
+				try {
+					PDF.writePdf(file, area.getText());
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (DocumentException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
 				}
 				
 			}
