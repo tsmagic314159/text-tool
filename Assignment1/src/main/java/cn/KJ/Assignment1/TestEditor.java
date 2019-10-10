@@ -142,7 +142,6 @@ public class TestEditor {
 				times=0;
 			}
 		});
-<<<<<<< HEAD
 		
 		confirm.addActionListener(new ActionListener() {
 			
@@ -162,7 +161,6 @@ public class TestEditor {
 			}
 		});
 		
-=======
 		
 		confirm.addActionListener(new ActionListener() {
 			
@@ -182,7 +180,6 @@ public class TestEditor {
 			}
 		});
 		
->>>>>>> KYY
 		next.addActionListener(new ActionListener() {
 			
 			@Override
@@ -224,11 +221,7 @@ public class TestEditor {
 				
 			}
 		});
-<<<<<<< HEAD
-=======
 
-	
->>>>>>> KYY
 
 	
 
@@ -251,22 +244,7 @@ public class TestEditor {
 		return a;
 	}
 	
-	public static ArrayList<Integer> searchItem(String key, String text) {
-		ArrayList<Integer> a = new ArrayList<Integer>();
-		for (int i = 0; i < text.length(); i++) {
-			for (int j = 0; j<key.length(); j++) {
-				if(!(text.charAt(i+j)==key.charAt(j))) {
-					break;
-				}
-				else {
-					if (j==key.length()-1) {
-						a.add(i);
-					}
-				}
-			}
-		}
-		return a;
-	}
+
 	}
 
 
