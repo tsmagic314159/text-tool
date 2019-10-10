@@ -1,13 +1,17 @@
 package cn.KJ.Assignment1;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FileDialog;
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -38,6 +42,7 @@ public class TestEditor {
 		JMenu print = new JMenu("Print");
 		JMenu currentDate = new JMenu("Date");
 		JMenu about = new JMenu("About");
+		JMenu scpc = new JMenu("CPC");
 		
 		JMenuItem printitem = new JMenuItem("print");
 		JMenuItem newitem = new JMenuItem("New");
@@ -45,6 +50,10 @@ public class TestEditor {
 		JMenuItem open = new JMenuItem("Open");
 		JMenuItem searchword = new JMenuItem("Search");
 		JMenuItem save2PDF = new JMenuItem("Save as PDF");
+		JMenuItem date = new JMenuItem("date");
+		JMenuItem cut = new JMenuItem("Cut");
+		JMenuItem copy = new JMenuItem("Copy");
+		JMenuItem paste = new JMenuItem("Paste");
 		
 		file.add(newitem);
 		file.add(open);
@@ -58,6 +67,13 @@ public class TestEditor {
 		bar.add(print);
 		bar.add(currentDate);
 		bar.add(about);
+		bar.add(scpc);
+		
+		currentDate.add(date);
+		
+		scpc.add(cut);
+		scpc.add(copy);
+		scpc.add(paste);
 		
 		bar.setPreferredSize(new Dimension(-5,40));
 		frame.setJMenuBar(bar);
@@ -67,7 +83,7 @@ public class TestEditor {
 		scrollbar.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 		scrollbar.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		frame.add(scrollbar);
-		
+
 		frame.setSize(800,500);
 		frame.setVisible(true);
 		FileDialog openDia = new FileDialog( frame, "Open", FileDialog.LOAD);
@@ -87,6 +103,8 @@ public class TestEditor {
 		searchPanel.add(next);
 		searchFrame.add(searchPanel);
 		searchFrame.setSize(400, 200);
+		
+
 
 		
 		newitem.addActionListener(new ActionListener() {
@@ -202,8 +220,61 @@ public class TestEditor {
 				
 			}
 		});
+		
+		cut.addActionListener(new ActionListener() {
 
-		test
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				area.cut();
+			}
+			
+		});
+		
+		
+		copy.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				area.copy();
+			}
+			
+		});
+		
+		
+		paste.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				area.paste();
+			}
+			
+		});
+		
+		date.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				String time = sdf.format(new Date());
+				JPanel tp = new JPanel();
+				tp.setLayout(new FlowLayout());
+				JTextField tt = new JTextField(20);
+				tt.setText(time);
+				tp.add(tt);
+				
+				frame.add(tp,BorderLayout.NORTH);
+				frame.validate();
+			}
+			
+		});
+		
+
+	
 
 	}
 	
