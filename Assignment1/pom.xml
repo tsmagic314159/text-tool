@@ -31,5 +31,16 @@
     	<artifactId>itextpdf</artifactId>
     	<version>5.5.13</version>
     </dependency>
+<<<<<<< HEAD
+=======
+    <dependency>
+    <groupId>org.apache.poi</groupId>
+    <artifactId>poi</artifactId>
+    <version>4.1.0</version>
+</dependency>
+
+
+>>>>>>> KYY
   </dependencies>
+  
 </project>
