@@ -21,8 +21,6 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
-<<<<<<< Updated upstream
-=======
     <dependency>
     	<groupId>com.itextpdf</groupId>
     	<artifactId>itext-asian</artifactId>
@@ -39,7 +37,7 @@
     <version>4.1.0</version>
 </dependency>
 
->>>>>>> Stashed changes
+
   </dependencies>
   
 </project>
