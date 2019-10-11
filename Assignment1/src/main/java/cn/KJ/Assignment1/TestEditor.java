@@ -38,7 +38,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 import com.itextpdf.text.DocumentException;
 
-public class TestEditor  {
+public class TestEditor implements Printable {
 	static int times=0;
 	static ArrayList<Integer> searchList = new ArrayList<Integer>();
 	static JTextArea area = new JTextArea();
@@ -348,6 +348,26 @@ public class TestEditor  {
 
 	}
 
+
+	public int print(Graphics graphics, PageFormat pf, int pageIndex) throws PrinterException {
+    	
+	      String str = area.getText(); 
+	      Graphics2D g2 = (Graphics2D) graphics;
+	      g2.setColor(Color.black);
+	      double x = pf.getImageableX();
+	      double y = pf.getImageableY();	       
+	      switch(pageIndex){
+	         case 0:
+	           Font ft = new Font("Serif", Font.BOLD, 10);
+	           g2.setFont(ft);
+	           float[] dh   = {5.0f}; 
+	           g2.setStroke(new   BasicStroke(0.3f, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_MITER, 5.0f, dh, 0.0f));
+	           g2.drawString(str, (float)x, (float)y + 1 * ft.getSize2D());	          
+	         return PAGE_EXISTS;
+	      }
+		return pageIndex;
+	      
+	   }
 	
 	
 	
