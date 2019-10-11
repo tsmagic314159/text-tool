@@ -320,6 +320,27 @@ public class TestEditor  {
 			}
 		});
 
+        
+		printitem.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				PrinterJob job = PrinterJob.getPrinterJob(); 
+				job.setPrintable(new TestEditor());
+				try {
+					
+					if (!job.printDialog())
+						return; 
+					    job.setJobName(" ");
+						job.print();
+					}
+				 catch (PrinterException e1) {
+					e1.printStackTrace();
+				}
+		
+				}
+			
+		});
 
 
     
