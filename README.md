@@ -17,7 +17,7 @@ At first, we have some files as `TestEditor.java`,`PDF.java`, `Functions.java`.<
 For example, when you run our program `TestEditor.java`, it wil appear a real test editor. On the top of the test editor, there is a menu, we use some JMenu and JButton to wrote it. We have `File`,`Search`,`Date`,`SCPC`,`About`. And if you click them, they will have some items. We use JMenuItem to wrote them. 
 
 ### File
-If you click this item, you can see `new`,`open`,`save`,`print`,`Save as PDF`. 
+If you click this item, you can see `new`,`open`,`save`,`print`,`Save as PDF`. 1
  
 
 
