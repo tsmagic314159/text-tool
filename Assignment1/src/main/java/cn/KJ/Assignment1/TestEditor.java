@@ -50,7 +50,7 @@ public class TestEditor  {
 		JMenu search = new JMenu("Search");
 		JMenu currentDate = new JMenu("Date");
 		JMenu scpc = new JMenu("SCPC");
-		
+		JMenu about = new JMenu("About");
 		JMenuItem printitem = new JMenuItem("print");
 		JMenuItem newitem = new JMenuItem("New");
 		JMenuItem save = new JMenuItem("Save");
@@ -62,6 +62,7 @@ public class TestEditor  {
 		JMenuItem copy = new JMenuItem("Copy");
 		JMenuItem paste = new JMenuItem("Paste");
 		JMenuItem select = new JMenuItem("Select");
+		JMenuItem aboutus = new JMenuItem("About Us");
 		
 		
 		file.add(newitem);
@@ -70,6 +71,7 @@ public class TestEditor  {
 		file.add(printitem);
 		file.add(save2PDF);
 		search.add(searchword);
+		about.add(aboutus);
 
 		
 		bar.add(file);
@@ -77,6 +79,8 @@ public class TestEditor  {
 
 		bar.add(currentDate);
 		bar.add(scpc);
+
+		bar.add(about);
 		
 		currentDate.add(date);
 		
@@ -118,8 +122,8 @@ public class TestEditor  {
 		
 		JFrame aboutframe = new JFrame("About Us");
 		JPanel aboutpanel = new JPanel();
-		aboutpanel.add(new JLabel("NZ172 Kang Yuyang 175176"));
-		aboutpanel.add(new JLabel("NZ172 Jia Yimin 175176"));
+		aboutpanel.add(new JLabel("NZ172 Kang Yuyang 19023466"));
+		aboutpanel.add(new JLabel("NZ172 Jia Yimin 19023460"));
 		aboutframe.add(aboutpanel);
 		aboutframe.setSize(300, 200);
 
@@ -305,7 +309,19 @@ public class TestEditor  {
 		});
 		
 
-		
+        aboutus.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				aboutframe.setVisible(true);
+				searchList.clear();
+				times=0;
+			}
+		});
+
+
+
     
 	
 
