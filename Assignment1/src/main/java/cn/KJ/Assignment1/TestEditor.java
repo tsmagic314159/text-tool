@@ -1,11 +1,20 @@
 package cn.KJ.Assignment1;
 
+import java.awt.BasicStroke;
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Dimension;
 import java.awt.FileDialog;
 import java.awt.FlowLayout;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.print.PageFormat;
+import java.awt.print.Printable;
+import java.awt.print.PrinterException;
+import java.awt.print.PrinterJob;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -29,20 +38,18 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 import com.itextpdf.text.DocumentException;
 
-public class TestEditor {
+public class TestEditor  {
 	static int times=0;
 	static ArrayList<Integer> searchList = new ArrayList<Integer>();
-	
+	static JTextArea area = new JTextArea();
 	public static void main(String[] args) {
 
 		JFrame frame = new JFrame("Text Editor");
 		JMenuBar bar = new JMenuBar();
 		JMenu file = new JMenu("File");
 		JMenu search = new JMenu("Search");
-		JMenu print = new JMenu("Print");
 		JMenu currentDate = new JMenu("Date");
-		JMenu about = new JMenu("About");
-		JMenu scpc = new JMenu("CPC");
+		JMenu scpc = new JMenu("SCPC");
 		
 		JMenuItem printitem = new JMenuItem("print");
 		JMenuItem newitem = new JMenuItem("New");
@@ -54,6 +61,8 @@ public class TestEditor {
 		JMenuItem cut = new JMenuItem("Cut");
 		JMenuItem copy = new JMenuItem("Copy");
 		JMenuItem paste = new JMenuItem("Paste");
+		JMenuItem select = new JMenuItem("Select");
+		
 		
 		file.add(newitem);
 		file.add(open);
@@ -61,23 +70,25 @@ public class TestEditor {
 		file.add(printitem);
 		file.add(save2PDF);
 		search.add(searchword);
+
 		
 		bar.add(file);
 		bar.add(search);
-		bar.add(print);
+
 		bar.add(currentDate);
-		bar.add(about);
 		bar.add(scpc);
 		
 		currentDate.add(date);
 		
+		scpc.add(select);
 		scpc.add(cut);
 		scpc.add(copy);
 		scpc.add(paste);
 		
+		
 		bar.setPreferredSize(new Dimension(-5,40));
 		frame.setJMenuBar(bar);
-		JTextArea area = new JTextArea();
+		
 		area.setLineWrap(true);
 		JScrollPane scrollbar = new JScrollPane(area);
 		scrollbar.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
@@ -104,6 +115,13 @@ public class TestEditor {
 		searchFrame.add(searchPanel);
 		searchFrame.setSize(400, 200);
 		
+		
+		JFrame aboutframe = new JFrame("About Us");
+		JPanel aboutpanel = new JPanel();
+		aboutpanel.add(new JLabel("NZ172 Kang Yuyang 175176"));
+		aboutpanel.add(new JLabel("NZ172 Jia Yimin 175176"));
+		aboutframe.add(aboutpanel);
+		aboutframe.setSize(300, 200);
 
 
 		
@@ -221,6 +239,19 @@ public class TestEditor {
 			}
 		});
 		
+		
+		select.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				area.selectAll();
+			}
+			
+		});
+		
+		
+		
 		cut.addActionListener(new ActionListener() {
 
 			@Override
@@ -274,9 +305,15 @@ public class TestEditor {
 		});
 		
 
+		
+    
 	
 
 	}
+
+	
+	
+	
 	
 	public static ArrayList<Integer> searchItem(String key, String text) {
 		ArrayList<Integer> a = new ArrayList<Integer>();
