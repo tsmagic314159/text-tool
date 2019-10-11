@@ -19,8 +19,8 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.JTextPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import com.itextpdf.text.DocumentException;
@@ -28,7 +28,7 @@ import com.itextpdf.text.DocumentException;
 public class TestEditor {
 	static int times=0;
 	static ArrayList<Integer> searchList = new ArrayList<Integer>();
-	
+	static JTextPane area = new JTextPane();
 	public static void main(String[] args) {
 
 		JFrame frame = new JFrame("Text Editor");
@@ -61,8 +61,9 @@ public class TestEditor {
 		
 		bar.setPreferredSize(new Dimension(-5,40));
 		frame.setJMenuBar(bar);
-		JTextArea area = new JTextArea();
-		area.setLineWrap(true);
+		
+		area.getDocument().addDocumentListener(new SyntaxHighlighter(area));
+
 		JScrollPane scrollbar = new JScrollPane(area);
 		scrollbar.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 		scrollbar.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
@@ -136,7 +137,7 @@ public class TestEditor {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
+				searchField.setText("");
 				searchFrame.setVisible(true);
 				searchList.clear();
 				times=0;
@@ -176,6 +177,7 @@ public class TestEditor {
 				}
 				else {
 					area.select(searchList.get(times), searchList.get(times)+key.length());
+					
 				}
 			}
 		});
