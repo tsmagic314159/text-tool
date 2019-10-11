@@ -34,6 +34,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.JTextPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import com.itextpdf.text.DocumentException;
@@ -41,7 +42,7 @@ import com.itextpdf.text.DocumentException;
 public class TestEditor implements Printable {
 	static int times=0;
 	static ArrayList<Integer> searchList = new ArrayList<Integer>();
-	static JTextArea area = new JTextArea();
+	static JTextPane area = new JTextPane();
 	public static void main(String[] args) {
 
 		JFrame frame = new JFrame("Text Editor");
@@ -93,7 +94,7 @@ public class TestEditor implements Printable {
 		bar.setPreferredSize(new Dimension(-5,40));
 		frame.setJMenuBar(bar);
 		
-		area.setLineWrap(true);
+//		area.setLineWrap(true);
 		JScrollPane scrollbar = new JScrollPane(area);
 		scrollbar.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 		scrollbar.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
@@ -343,29 +344,27 @@ public class TestEditor implements Printable {
 		});
 
 
-    
-	
 
 	}
 
 
-	public int print(Graphics graphics, PageFormat pf, int pageIndex) throws PrinterException {
+	public int print(Graphics graphics, PageFormat pf, int pn) throws PrinterException {
     	
 	      String str = area.getText(); 
 	      Graphics2D g2 = (Graphics2D) graphics;
 	      g2.setColor(Color.black);
 	      double x = pf.getImageableX();
 	      double y = pf.getImageableY();	       
-	      switch(pageIndex){
+	      switch(pn){
 	         case 0:
 	           Font ft = new Font("Serif", Font.BOLD, 10);
 	           g2.setFont(ft);
 	           float[] dh   = {5.0f}; 
 	           g2.setStroke(new   BasicStroke(0.3f, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_MITER, 5.0f, dh, 0.0f));
-	           g2.drawString(str, (float)x, (float)y + 1 * ft.getSize2D());	          
+	           g2.drawString(str, (float)x, (float)y + ft.getSize2D());	          
 	         return PAGE_EXISTS;
 	      }
-		return pageIndex;
+		return pn;
 	      
 	   }
 	
