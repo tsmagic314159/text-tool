@@ -36,6 +36,7 @@ import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import com.alibaba.fastjson.JSONObject;
 import com.itextpdf.text.DocumentException;
 
 public class TestEditor implements Printable {
@@ -43,7 +44,11 @@ public class TestEditor implements Printable {
 	static ArrayList<Integer> searchList = new ArrayList<Integer>();
 	static JTextPane area = new JTextPane();
 	public static void main(String[] args) {
-
+		
+//		use the json to set the width and hight
+		JSONObject json = JsonResourceUtils.getJsonObjFromResource("/conf.json");
+		
+//		build the frame
 		JFrame frame = new JFrame("Text Editor");
 		JMenuBar bar = new JMenuBar();
 		JMenu file = new JMenu("File");
@@ -100,7 +105,7 @@ public class TestEditor implements Printable {
 		scrollbar.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		frame.add(scrollbar);
 
-		frame.setSize(800,500);
+		frame.setSize(json.getIntValue("width"),json.getIntValue("hight"));
 		frame.setVisible(true);
 		FileDialog openDia = new FileDialog( frame, "Open", FileDialog.LOAD);
 		FileDialog saveDia = new FileDialog(frame, "Save", FileDialog.SAVE);

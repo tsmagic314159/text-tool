@@ -14,15 +14,19 @@ import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
 
 public class SyntaxHighlighter implements DocumentListener{
-	   private Set<String> keywords;
+	    private Set<String> keywords;
+	    private Set<String> keywords2;
 	    private Style keywordStyle;
 	    private Style normalStyle;
+	    private Style keywordStyle2;
 	 
 	    public SyntaxHighlighter(JTextPane editor) {
 	        // 准备着色使用的样式
 	        keywordStyle = ((StyledDocument) editor.getDocument()).addStyle("Keyword_Style", null);
+	        keywordStyle2 = ((StyledDocument) editor.getDocument()).addStyle("Keyword_Style", null);
 	        normalStyle = ((StyledDocument) editor.getDocument()).addStyle("Keyword_Style", null);
 	        StyleConstants.setForeground(keywordStyle, Color.RED);
+	        StyleConstants.setForeground(keywordStyle2, Color.BLUE);
 	        StyleConstants.setForeground(normalStyle, Color.BLACK);
 	 
 	        // 准备关键字
@@ -33,8 +37,9 @@ public class SyntaxHighlighter implements DocumentListener{
 	        keywords.add("int");
 	        keywords.add("float");
 	        keywords.add("double");
-	        keywords.add("import");
 	        keywords.add("return");
+	        keywords2 = new HashSet<String>();
+	        keywords2.add("import");
 	    }
 	 
 	    public void colouring(StyledDocument doc, int pos, int len) throws BadLocationException {
@@ -74,7 +79,11 @@ public class SyntaxHighlighter implements DocumentListener{
 	            // 但我们又要达到能够修改doc的属性, 所以把此任务放到这个方法的外面去执行.
 	            // 实现这一目的, 可以使用新线程, 但放到swing的事件队列里去处理更轻便一点.
 	            SwingUtilities.invokeLater(new ColouringTask(doc, pos, wordEnd - pos, keywordStyle));
-	        } else {
+	        }
+	        else if(keywords2.contains(word)) {
+	        	SwingUtilities.invokeLater(new ColouringTask(doc, pos, wordEnd-pos, keywordStyle2));
+	        }
+	        else {
 	            SwingUtilities.invokeLater(new ColouringTask(doc, pos, wordEnd - pos, normalStyle));
 	        }
 	 
