@@ -24,9 +24,7 @@ public class JsonResourceUtils {
 	try {             
 		URL url = JsonResourceUtils.class.getResource(filename);
 		String path = url.getPath();
-		System.out.println(path);
 		File file = new File(path);
-		System.out.println(file.toString());
 		if (file.exists()) {
 			String content = FileUtils.readFileToString(file, "UTF-8");
 			json = JSON.parseObject(content);

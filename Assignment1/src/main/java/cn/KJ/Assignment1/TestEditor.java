@@ -39,6 +39,8 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import com.alibaba.fastjson.JSONObject;
 import com.itextpdf.text.DocumentException;
 
+import fr.opensagres.xdocreport.converter.XDocConverterException;
+
 public class TestEditor implements Printable {
 	static int times=0;
 	static ArrayList<Integer> searchList = new ArrayList<Integer>();
@@ -111,6 +113,7 @@ public class TestEditor implements Printable {
 		FileDialog saveDia = new FileDialog(frame, "Save", FileDialog.SAVE);
 		JFileChooser pdfSaver = new JFileChooser();
 		pdfSaver.setFileFilter(new FileNameExtensionFilter("pdf", ".pdf"));
+		
 
 		
 		JFrame searchFrame = new JFrame("Search");
@@ -151,6 +154,8 @@ public class TestEditor implements Printable {
 				openDia.setVisible(true);
 				Functions openit = new Functions();
 				openit.setDirpath(openDia.getDirectory());
+				String filename = openDia.getFile();
+				if (!(filename.endsWith(".odt"))) {
 				openit.setFilename(openDia.getFile());
 				try {
 					String test = openit.OpenFile();
@@ -159,7 +164,24 @@ public class TestEditor implements Printable {
 					JOptionPane.showMessageDialog(frame, "file not found!");
 					e1.printStackTrace();
 				}
-			}
+				}
+				else {
+					try {
+						odt.odt2pdf(filename);
+						area.setText(pdf2string.GetTextFromPdf("erw.pdf"));
+					} catch (FileNotFoundException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (XDocConverterException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					
+				}
+				}
 		});
 		
 		save.addActionListener(new ActionListener() {
@@ -208,24 +230,6 @@ public class TestEditor implements Printable {
 		});
 		
 		
-		confirm.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-				String key = searchField.getText().toLowerCase();
-				String text = area.getText();
-				searchList = searchItem(key, text);
-				times=0;
-				if (searchList.size()==0) {
-					JOptionPane.showMessageDialog(searchFrame, "No matches");
-				}
-				else {
-					area.select(searchList.get(times), searchList.get(times)+key.length());
-					
-				}
-			}
-		});
 		
 		next.addActionListener(new ActionListener() {
 			
@@ -367,6 +371,7 @@ public class TestEditor implements Printable {
 				}
 			
 		});
+		
 
 
 
