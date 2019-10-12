@@ -364,8 +364,6 @@ public class TestEditor implements Printable {
 
 
 
-	
-
 	}
 
 
