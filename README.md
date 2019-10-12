@@ -14,7 +14,7 @@
      
 At first, we have some files as `TestEditor.java`,`PDF.java`, `Functions.java`.<br>
 `TestEditor.java` is our main function. During this file, we had written `Open`,`Save`,`Search`,`Confirm`,`Next`,`Select`,`Cut`,`Copy`,`Paste`,`Date`,`Aboutus`,Print functions.We implement these functions by some listeners. <br>
-![](https://github.com/tsmagic314159/251-Assignment1-KangYuyang-JiaYimin/blob/master/YPW25%609J9P%5B~NGZ%5D0B1)9%7D9.png) 
+![](https://github.com/tsmagic314159/251-Assignment1-KangYuyang-JiaYimin/blob/master/YPW25%609J9P%5B~NGZ%5D0B19%7D9.png) 
 ### TestEditor.java
 For example, when you run our program `TestEditor.java`, it wil appear a real text editor. On the top of the text editor, there is a menu, we use some JMenu and JButton to wrote it. We have `File`,`Search`,`Date`,`SCPC`,`About`. And if you click them, they will have some items. We use JMenuItem to wrote them. 
 #### File
