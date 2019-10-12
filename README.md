@@ -18,14 +18,19 @@ At first, we have some files as `TestEditor.java`,`PDF.java`, `Functions.java`.<
 ### TestEditor.java
 For example, when you run our program `TestEditor.java`, it wil appear a real text editor. On the top of the text editor, there is a menu, we use some JMenu and JButton to wrote it. We have `File`,`Search`,`Date`,`SCPC`,`About`. And if you click them, they will have some items. We use JMenuItem to wrote them. 
 #### File
+![](https://github.com/tsmagic314159/251-Assignment1-KangYuyang-JiaYimin/blob/master/file.png)<br>
 If you click this item, you can see `new`,`open`,`save`,`print`,`Save as PDF`. For example, you can start a new test by `new`, open a file in text editor by `open`, save the content of test by `save`,and print it by `print`. If you want save the file as a `.pdf`, you can click `Save as PDF`.
 #### Search
+![](https://github.com/tsmagic314159/251-Assignment1-KangYuyang-JiaYimin/blob/master/search.png)<br>
 In this item, you can write a key word and the text editor can return all the key words in this test.  We had use a JPanel and some labels to guide people to use this function.
 #### Date
+![](https://github.com/tsmagic314159/251-Assignment1-KangYuyang-JiaYimin/blob/master/date.png)<br> 
 According to this item, it can appear a clock to help you konw the current time clearly. And if click it, the clock will appear at the top of the text editor.
 #### SCPC
+![](https://github.com/tsmagic314159/251-Assignment1-KangYuyang-JiaYimin/blob/master/SCPC.png)<br> 
 In this menu, we had written 4 items, `Select`,`Copy`,`Cut`,`Paste`. `Select` is a function to help people to select all content. `Copy`,`Cut` and `Paste` have the functions just like their names.
 #### About 
+![](https://github.com/tsmagic314159/251-Assignment1-KangYuyang-JiaYimin/blob/master/about.png)<br>
 If you click this item, it will show our imformation at a new panel. We use a JPanel as a background, and use some labels to show our imformation, such as, name,class,and student number.
 
  
