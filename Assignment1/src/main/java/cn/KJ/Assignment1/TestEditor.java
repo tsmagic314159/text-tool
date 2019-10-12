@@ -32,7 +32,6 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -95,6 +94,7 @@ public class TestEditor implements Printable {
 		frame.setJMenuBar(bar);
 		
 //		area.setLineWrap(true);
+		area.getDocument().addDocumentListener(new SyntaxHighlighter(area));
 		JScrollPane scrollbar = new JScrollPane(area);
 		scrollbar.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 		scrollbar.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
@@ -177,7 +177,7 @@ public class TestEditor implements Printable {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
+				searchField.setText("");
 				searchFrame.setVisible(true);
 				searchList.clear();
 				times=0;
@@ -217,6 +217,7 @@ public class TestEditor implements Printable {
 				}
 				else {
 					area.select(searchList.get(times), searchList.get(times)+key.length());
+					
 				}
 			}
 		});
