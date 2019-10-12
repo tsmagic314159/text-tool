@@ -167,7 +167,7 @@ public class TestEditor implements Printable {
 				}
 				else {
 					try {
-						odt.odt2pdf(filename);
+						odt.odt2pdf(openDia.getDirectory()+filename);
 						area.setText(pdf2string.GetTextFromPdf("erw.pdf"));
 					} catch (FileNotFoundException e1) {
 						// TODO Auto-generated catch block
