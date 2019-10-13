@@ -155,7 +155,7 @@ public class TestEditor implements Printable {
 				Functions openit = new Functions();
 				openit.setDirpath(openDia.getDirectory());
 				String filename = openDia.getFile();
-				if (!(filename.endsWith(".odt"))) {
+				if (filename.endsWith(".txt")||filename.endsWith(".java")||filename.endsWith(".python")) {
 				openit.setFilename(openDia.getFile());
 				try {
 					String test = openit.OpenFile();
@@ -165,7 +165,7 @@ public class TestEditor implements Printable {
 					e1.printStackTrace();
 				}
 				}
-				else {
+				else if(filename.endsWith(".odt")){
 					try {
 						odt.odt2pdf(openDia.getDirectory()+filename);
 						area.setText(pdf2string.GetTextFromPdf("erw.pdf"));
@@ -180,6 +180,9 @@ public class TestEditor implements Printable {
 						e1.printStackTrace();
 					}
 					
+				}
+				else {
+					JOptionPane.showMessageDialog(frame, "Can not open a file other than a (.txt.odt.java.python) file.");
 				}
 				}
 		});

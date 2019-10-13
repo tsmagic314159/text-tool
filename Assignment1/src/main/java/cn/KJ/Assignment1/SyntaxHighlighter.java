@@ -40,6 +40,8 @@ public class SyntaxHighlighter implements DocumentListener{
 	        keywords.add("return");
 	        keywords2 = new HashSet<String>();
 	        keywords2.add("import");
+	        keywords2.add("void");
+	        keywords2.add("new");
 	    }
 	 
 	    public void colouring(StyledDocument doc, int pos, int len) throws BadLocationException {

@@ -34,14 +34,12 @@ public class TestSaveAndOpen {
 			test+=line;
 		}
 		reader.close();
-		System.out.println(test);
 		assertTrue(test.equals("qwe"));
 	}
 	
 	@Test
 	public void testOpen() throws IOException {
 		String test2 = func.OpenFile();
-		System.out.println(test2);
 		assertTrue(test2.equals("qwe\r\n"));
 	}
 
