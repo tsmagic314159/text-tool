@@ -52,7 +52,8 @@ It is a file to help us to read the configuration json file. And we had set the 
 ### AppTest.java,TestSaveAndOpen.java,TestSearch.java
 These files are test files which can check if `Search`,`Save` and `Open` functions are correct. If they are correct, they will pass these tests.  
 
-
+### reports folder
+It is a folder which have two files. The first file is  `metrics.txt` which has code size,lines od code,number of method and code complexity. Another file is `pmd.html` which has the code quality report from PMD.
 
 
 
